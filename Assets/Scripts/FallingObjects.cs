@@ -17,6 +17,7 @@ public class FallingObjects : MonoBehaviour {
     bool play = true;
 
     public GameObject escapeDeniedPrefab;
+    public GameObject successPopUpPrefab;
 
     // Use this for initialization
     void Start () {
@@ -63,7 +64,9 @@ public class FallingObjects : MonoBehaviour {
         else {
             obtainedObjects += 1;
             objectsLabel.text = obtainedObjects + "/" + objectsToPass;
-
+            if (obtainedObjects >= 30) {
+                showSuccessPopUp();
+            }
         }
     }
 
@@ -75,5 +78,14 @@ public class FallingObjects : MonoBehaviour {
         //Prefab
         GameObject obj = NGUITools.AddChild(parent, escapeDeniedPrefab);
         EscapeDeniedPopUp popup = obj.GetComponent<EscapeDeniedPopUp>();
+    }
+
+    void showSuccessPopUp() {
+        //Do something
+        GameObject parent = UICamera.first.transform.parent.gameObject;
+        Debug.Log("PARENT NAME: " + parent.name);
+        //Prefab
+        GameObject obj = NGUITools.AddChild(parent, successPopUpPrefab);
+        SuccessPopUp popup = obj.GetComponent<SuccessPopUp>();
     }
 }

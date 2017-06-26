@@ -11,10 +11,17 @@ public class Fruit : Collectable {
     void OnTriggerEnter2D(Collider2D collider)
     {
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
-		if(refugee != null){
-            Debug.Log("WKOWKJWOIKW");
+        if (refugee)
+        {
+            if (LivesPanel.health > 94)
+                LivesPanel.health = 100;
+            else
+                LivesPanel.health += 5;
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        else {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnMouseDown()
