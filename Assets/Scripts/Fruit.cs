@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour {
+public class Fruit : Collectable {
 
     private void Start()
     {
-        Debug.Log("POS X: "+ this.transform.position.x);
+        
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -17,6 +17,7 @@ public class Fruit : MonoBehaviour {
     void OnMouseDown()
     {
         // this object was clicked - do something
+        FallingObjects.fallingObjectsInstance.collectFruits(this);
         Destroy(this.gameObject);
     }
 }
