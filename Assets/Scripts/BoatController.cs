@@ -13,10 +13,20 @@ public class BoatController : MonoBehaviour {
     public Sprite spriteHero;
     public GameObject heroOnAboart;
     public HeroRefugee hero;
+
+    public AudioClip winMusic = null;
+    public static AudioSource winSource = null;
+
+    public GameObject winPopUpPrefab;
     // Use this for initialization
     void Start () {
         target = pointX.transform.position;
-	}
+        winSource = gameObject.AddComponent<AudioSource>();
+        winSource.clip = winMusic;
+        winSource.loop = true;
+        winSource.Play();
+        winSource.Pause();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,6 +42,9 @@ public class BoatController : MonoBehaviour {
             canMove = false;
             hero.GetComponent<SpriteRenderer>().sprite = spriteHero;
             heroOnAboart.GetComponent<SpriteRenderer>().sprite = null;
+            hero.transform.position += new Vector3(0f,5f,0f); 
+            winSource.Pause();
+            showWinPopUp();
         }
         transform.Translate(direction.normalized * Time.deltaTime * speed);
     }
@@ -49,6 +62,7 @@ public class BoatController : MonoBehaviour {
         hero.GetComponent<SpriteRenderer>().sprite = null;
         heroOnAboart.GetComponent<SpriteRenderer>().sprite = spriteHero;
         SetNewParent(hero.transform, this.transform);
+        winSource.UnPause();
     }
 
     static void SetNewParent(Transform obj, Transform new_parent)
@@ -59,5 +73,13 @@ public class BoatController : MonoBehaviour {
             obj.transform.parent = new_parent;
             obj.transform.position = pos;
         }
+    }
+
+    void showWinPopUp() {
+        GameObject parent = UICamera.first.transform.parent.gameObject;
+        Debug.Log("PARENT NAME: " + parent.name);
+        //Prefab
+        GameObject obj = NGUITools.AddChild(parent, winPopUpPrefab);
+        WinPopUp popup = obj.GetComponent<WinPopUp>();
     }
 }
