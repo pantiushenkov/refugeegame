@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class Fruit : Collectable {
 
-    private void Start()
-    {
-        
+    private static int count = 0;
+    public int id;
+
+    void Start(){
+        id = count;
+        count++;
+        Debug.Log("count" + count);
+    }
+
+    public int getId(){
+        return id;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("ON TRIGGER"+ this.transform.position.x +" / Y:"+this.transform.position.y);
+        HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
+        if (refugee){
+            FruitController.instance.setCollected(this.getId());
+            LivesPanel.instance.addHealth(5);
+        }
+
         Destroy(this.gameObject);
     }
 

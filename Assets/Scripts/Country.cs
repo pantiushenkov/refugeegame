@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Country : MonoBehaviour {
+    public string currentLevelName = "Game";
 
-	public Country country = null;
+    public Country country = null;
 	public static Country current = null;
 	
 	void Awake() {
@@ -38,7 +39,6 @@ public class Country : MonoBehaviour {
             if (refugee.getEscapedCountries() == 2){
                 loadCustoms();
             }
-
 		}
 	}
 
@@ -51,8 +51,11 @@ public class Country : MonoBehaviour {
 
         string str = JsonUtility.ToJson(stats);
 
-        ///PlayerPrefs.SetInt("life", MainController.instance.gt());
-
+        PlayerPrefs.SetString(currentLevelName, str);
+        PlayerPrefs.SetInt("health", LivesPanel.instance.getAmountOfHealth());
+        
+        PlayerPrefs.Save();
+        
         SceneManager.LoadScene("Customs");
         PlayerPrefs.Save();   
     }

@@ -53,9 +53,11 @@ public class QuestionPopUp : MonoBehaviour {
         if (getRandom() == true)
         {
             result.text = "Yesss, you are right!";
+            StartCoroutine(destroyPopUp());
         }
         else {
             result.text = "NO, it's not your day...";
+            StartCoroutine(destroyPopUp());
         }
     }
 
@@ -75,5 +77,10 @@ public class QuestionPopUp : MonoBehaviour {
 
     bool getRandom() {
         return ran.NextDouble() > 0.5;
+    }
+
+    IEnumerator destroyPopUp() {
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
     }
 }

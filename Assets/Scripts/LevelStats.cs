@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelStats
 {
     public Vector2 position;
-    public int life = 50;
+    public int live = 50;
     public bool[] collectedQuestions = new bool[10];
 	public bool[] collectedFruits = new bool[10];
 }
