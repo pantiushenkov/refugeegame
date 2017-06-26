@@ -7,5 +7,5 @@ public class LevelStats
 {
     public Vector2 position;
     public int health = 50;
-    public bool[] collectedFruits = new bool[10];
+    public bool[] collectedFruits = new bool[100];
 }
