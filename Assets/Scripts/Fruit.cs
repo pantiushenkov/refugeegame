@@ -6,12 +6,10 @@ public class Fruit : Collectable {
 
     private void Start()
     {
-        Debug.Log("STARTED");
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("ON TRIGGER"+ this.transform.position.x +" / Y:"+this.transform.position.y);
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
         if (refugee)
         {

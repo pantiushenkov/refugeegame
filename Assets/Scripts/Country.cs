@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Country : MonoBehaviour {
 
@@ -30,9 +31,11 @@ public class Country : MonoBehaviour {
 		HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
 		if(refugee){
  			Dictionary<President, Country> dict = MainController.instance.getList();
-			foreach(KeyValuePair<President, Country> entry in dict)
-			{
+			foreach(KeyValuePair<President, Country> entry in dict){
 				if(entry.Value == country) entry.Key.goHome();
+			}
+			if(refugee.getVisitedCountries() == 2){
+				SceneManager.LoadScene("Customs");
 			}
 		}
 	}
