@@ -35,10 +35,16 @@ public class Country : MonoBehaviour {
 			foreach(KeyValuePair<President, Country> entry in dict){
 				if(entry.Value == country) entry.Key.goHome();
 			}
+<<<<<<< HEAD
 
             if (refugee.getEscapedCountries() == 2){
                 loadCustoms();
             }
+=======
+			if(refugee.getVisitedCountries() == 2){
+				SceneManager.LoadScene("Customs");
+			}
+>>>>>>> 0468b5214079c1318ade227d932e01fa19b68a6e
 		}
 	}
 

@@ -36,8 +36,15 @@ public class MainController : MonoBehaviour{
 		return list;
 	}
 
+<<<<<<< HEAD
     public LevelStats getStats(){
         return stat;
     }
 
+=======
+	public void Start(){
+		
+	}
+ 
+>>>>>>> 0468b5214079c1318ade227d932e01fa19b68a6e
 }

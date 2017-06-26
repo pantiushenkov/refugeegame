@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fruit : Collectable {
 
+<<<<<<< HEAD
     private static int count = 0;
     public int id;
 
@@ -15,11 +16,14 @@ public class Fruit : Collectable {
 
     public int getId(){
         return id;
+=======
+    private void Start()
+    {
+>>>>>>> 0468b5214079c1318ade227d932e01fa19b68a6e
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("ON TRIGGER"+ this.transform.position.x +" / Y:"+this.transform.position.y);
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
         if (refugee){
             FruitController.instance.setCollected(this.getId());
