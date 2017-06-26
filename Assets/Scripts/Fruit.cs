@@ -6,11 +6,14 @@ public class Fruit : Collectable {
 
     private void Start()
     {
-        
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
+		if(refugee != null){
+            Debug.Log("WKOWKJWOIKW");
+        }
         Destroy(this.gameObject);
     }
 

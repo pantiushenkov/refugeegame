@@ -22,5 +22,9 @@ public class MainController : MonoBehaviour{
 	public Dictionary<President, Country> getList(){
 		return list;
 	}
+
+	public void Start(){
+		
+	}
  
 }
