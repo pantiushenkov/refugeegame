@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroRefugee : MonoBehaviour {
-	
+	public static HeroRefugee instance = null;
 	public float speed = 0.5f;
+	
+	void Awake() {
+		instance = this;
+	}
 	
 	void Start () {
 		
