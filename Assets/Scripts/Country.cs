@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Country : MonoBehaviour {
     public string currentLevelName = "Game";
-
+	public float x;
+    public float y;
+    public float z;
     public Country country = null;
 	public static Country current = null;
 	
@@ -47,16 +49,24 @@ public class Country : MonoBehaviour {
 
     public void loadCustoms(){
         LevelStats stats = MainController.instance.getStats();
-
+		Debug.Log("loadCustom");
+		for(int i=0;i<stats.collectedFruits.Length;i++)
+			Debug.Log("i" +" " + i + " " +  stats.collectedFruits[i]);
         string str = JsonUtility.ToJson(stats);
+		HeroRefugee player = HeroRefugee.instance;
+		LivesPanel.instance.setPause(); 
 
         PlayerPrefs.SetString(currentLevelName, str);
         PlayerPrefs.SetInt("health", LivesPanel.instance.getAmountOfHealth());
-        //PlayerPrefs.SetInt("frui", LivesPanel.instance.getAmountOfHealth());
-
-        PlayerPrefs.Save();
+		x = player.transform.position.x;
+        PlayerPrefs.SetFloat("x", x);
+        y = player.transform.position.y;
+        PlayerPrefs.SetFloat("y", y);
+        z = player.transform.position.z;
+        PlayerPrefs.SetFloat("z", z);
+        
+		PlayerPrefs.Save();
         
         SceneManager.LoadScene("Customs");
-        PlayerPrefs.Save();   
     }
 }

@@ -10,7 +10,6 @@ public class Fruit : Collectable {
     void Start(){
         id = count;
         count++;
-        Debug.Log("count" + count);
     }
 
     public int getId() {
@@ -25,8 +24,7 @@ public class Fruit : Collectable {
     {
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
         if (refugee){
-            Debug.Log("this.getId()" + this.getId());
-            FruitController.instance.setCollected(this.getId());
+            MainController.instance.addFruit(this.getId());
             LivesPanel.instance.addHealth(5);
             Destroy(this.gameObject);
         }
