@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeroRefugee : MonoBehaviour
 {
     public static HeroRefugee instance = null;
-    public float speed = 0.5f;
+    public float speed = 1f;
     int escapedNumber = 0;
 
     void Awake()

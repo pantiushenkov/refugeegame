@@ -9,6 +9,8 @@ public class LivesPanel : MonoBehaviour {
     double lastHealth = 100;
     float lastTime = 0;
 
+    public GameObject escapeDeniedPrefab;
+
     void Awake(){
         instance = this;
     }
@@ -40,10 +42,22 @@ public class LivesPanel : MonoBehaviour {
 
     void removeHealth(int damage) {
         health -= damage;
+        if (health <= 0) {
+            showEscapeDeniedPopUp();
+        }
     }
 
     public int getAmountOfHealth() {
         return health;
+    }
+
+    void showEscapeDeniedPopUp() {
+        //Do something
+        GameObject parent = UICamera.first.transform.parent.gameObject;
+        Debug.Log("PARENT NAME: " + parent.name);
+        //Prefab
+        GameObject obj = NGUITools.AddChild(parent, escapeDeniedPrefab);
+        EscapeDeniedPopUp popup = obj.GetComponent<EscapeDeniedPopUp>();
     }
     
 }

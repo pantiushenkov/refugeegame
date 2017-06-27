@@ -38,10 +38,10 @@ public class EscapeDeniedPopUp : MonoBehaviour
 
     void restart() {
         Debug.Log("RESTARTTT");
-        SceneManager.LoadScene("Customs");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void mainMenu() {
-        Debug.Log("MAIINMENUUU");
+        SceneManager.LoadScene("MainMenu");
     }
 }
