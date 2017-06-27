@@ -37,7 +37,7 @@ public class Country : MonoBehaviour {
 			foreach(KeyValuePair<President, Country> entry in dict){
 				if(entry.Value == country) entry.Key.goHome();
 			}
-            if (refugee.getEscapedCountries() == 200){
+            if (refugee.getEscapedCountries() == 7){
                 loadCustoms();
             }
 		}

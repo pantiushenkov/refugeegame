@@ -62,6 +62,7 @@ public class BoatController : MonoBehaviour {
         hero.GetComponent<SpriteRenderer>().sprite = null;
         heroOnAboart.GetComponent<SpriteRenderer>().sprite = spriteHero;
         SetNewParent(hero.transform, this.transform);
+        MainController.instance.stopMusic();
         winSource.UnPause();
     }
 

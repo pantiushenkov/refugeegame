@@ -8,14 +8,9 @@ public class LivesPanel : MonoBehaviour {
     public int health = 100;
     double lastHealth = 100;
     float lastTime = 0;
-<<<<<<< HEAD
-
     public GameObject escapeDeniedPrefab;
 
-=======
     public bool pause;
-    
->>>>>>> 421c4e4bfd27ad36ae63140a180c935b7a1762f1
     void Awake(){
         pause = false;
         instance = this;

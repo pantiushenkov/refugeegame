@@ -59,20 +59,23 @@ public class FallingObjects : MonoBehaviour {
         {
             Debug.Log("BADDDDD BOY");
             play = false;
-            showEscapeDeniedPopUp();
+            StartCoroutine(EscapeDeniedPopUp());
         }
         else {
             obtainedObjects += 1;
             objectsLabel.text = obtainedObjects + "/" + objectsToPass;
             if (obtainedObjects >= objectsToPass) {
-                showSuccessPopUp();
+                StartCoroutine(showSuccessPopUp());
             }
         }
     }
 
-    void showEscapeDeniedPopUp()
+    IEnumerator EscapeDeniedPopUp()
     {
+
+        yield return new WaitForSeconds(0.8f);
         //Do something
+        
         GameObject parent = UICamera.first.transform.parent.gameObject;
         Debug.Log("PARENT NAME: " + parent.name);
         //Prefab
@@ -80,7 +83,8 @@ public class FallingObjects : MonoBehaviour {
         EscapeDeniedPopUp popup = obj.GetComponent<EscapeDeniedPopUp>();
     }
 
-    void showSuccessPopUp() {
+    IEnumerator showSuccessPopUp() {
+        yield return new WaitForSeconds(0.8f);
         //Do something
         GameObject parent = UICamera.first.transform.parent.gameObject;
         Debug.Log("PARENT NAME: " + parent.name);

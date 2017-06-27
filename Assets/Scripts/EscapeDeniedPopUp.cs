@@ -37,7 +37,6 @@ public class EscapeDeniedPopUp : MonoBehaviour
     }
 
     void restart() {
-        Debug.Log("RESTARTTT");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

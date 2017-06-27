@@ -32,7 +32,7 @@ public class President : MonoBehaviour {
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
         if (refugee)
         {
-            Debug.Log("Here");
+            refugee.triggerCought(true);
             showLosePopUp();
         }
     }

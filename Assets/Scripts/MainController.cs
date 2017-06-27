@@ -15,13 +15,27 @@ public class MainController : MonoBehaviour{
 	 public float x;
      public float y;
      public float z;
-     public void Awake(){
+     public AudioClip backgroundMusic = null;
+     public static AudioSource musicSource = null;
+     
+    public void Awake(){
+        
 		instance = this;
 		list = new Dictionary<President, Country>();
         
 		for (int i = 0; i < presidents.Count; i++)
 			list.Add(presidents[i], countries[i]);
-	}
+
+
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.clip = backgroundMusic;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+    public void stopMusic()
+    {
+        musicSource.Pause();
+    }
 
     void Start(){
         string str = PlayerPrefs.GetString(currentLevelName, null);
