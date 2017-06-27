@@ -8,10 +8,16 @@ public class LivesPanel : MonoBehaviour {
     public int health = 100;
     double lastHealth = 100;
     float lastTime = 0;
+<<<<<<< HEAD
 
     public GameObject escapeDeniedPrefab;
 
+=======
+    public bool pause;
+    
+>>>>>>> 421c4e4bfd27ad36ae63140a180c935b7a1762f1
     void Awake(){
+        pause = false;
         instance = this;
     }
 
@@ -19,9 +25,13 @@ public class LivesPanel : MonoBehaviour {
         healthLabel.text = health + "%";
         lastTime = Time.time;
 	}
+    
+    public void setPause(){
+        pause = true;
+    }
 
 	void Update () {
-        if (Time.time - lastTime > 4)
+        if (!pause && Time.time - lastTime > 4)
         {
             removeHealth(1);
             lastTime = Time.time;

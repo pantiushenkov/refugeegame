@@ -11,21 +11,21 @@ public class FruitController : MonoBehaviour {
 
     void Start(){
         bool[] collected = MainController.instance.getStats().collectedFruits;
-        Debug.Log(collected.Length);
         Fruit[] all = this.GetComponentsInChildren<Fruit>();
+        //Debug.Log("collected");
+        for (int i = 0; i < collected.Length; ++i){
+            Debug.Log(collected[i]);
+        }
+        //Debug.Log("all");
         for (int i = 0; i < all.Length; ++i){
-            Debug.Log("collected[all[i].getId()]" + collected[all[i].getId()]);
+            Debug.Log(collected[all[i].getId()]);
             if (collected[all[i].getId()]){
-                Debug.Log("ere");
+                Debug.Log("WOOOOOOOOOOOOOOOOOOKIR");
                 all[i].GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 128);
             }
             //Destroy(all[i].GetComponent<SpriteRenderer>());
-            Debug.Log("all[i].getId()" + all[i].getId());
+            //Debug.Log("all[i].getId()" + all[i].getId());
         }
 
-    }
-
-    public void setCollected(int id){
-        MainController.instance.stat.collectedFruits[id] = true;
     }
 }
