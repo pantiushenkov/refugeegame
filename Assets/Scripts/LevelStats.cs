@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class LevelStats
 {
-    public bool[] collectedFruits = new bool[10];
+    public bool[] collectedFruits = new bool[100];
 }

@@ -12,6 +12,8 @@ public class President : MonoBehaviour {
 	Vector3 direction;
 	bool goInside = false,attack = false;
 	public Vector3 refugee_pos,initial_pos,my_pos;
+
+    public GameObject losePopUpPrefab;
 	
 	void Awake() {
 		instance = this;
@@ -24,8 +26,18 @@ public class President : MonoBehaviour {
 		this.wait = false;
 		countryPos = Country.current.getCountryPos();
 	}
-	
-	public void run(){
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
+        if (refugee)
+        {
+            Debug.Log("Here");
+            showLosePopUp();
+        }
+    }
+
+    public void run(){
 		attack = true;
 		direction = new Vector3(Random.value * 10, Random.value * 10 , 0);
 	}	
@@ -68,5 +80,13 @@ public class President : MonoBehaviour {
 			direction = initial_pos;
 			walk();
 		}
-	}	
+	}
+
+    void showLosePopUp() {
+        GameObject parent = UICamera.first.transform.parent.gameObject;
+        Debug.Log("PARENT NAME: " + parent.name);
+        //Prefab
+        GameObject obj = NGUITools.AddChild(parent, losePopUpPrefab);
+        EscapeDeniedPopUp popup = obj.GetComponent<EscapeDeniedPopUp>();
+    }
 }
