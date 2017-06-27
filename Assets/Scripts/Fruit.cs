@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Fruit : Collectable {
 
-<<<<<<< HEAD
     private static int count = 0;
     public int id;
 
@@ -14,23 +13,23 @@ public class Fruit : Collectable {
         Debug.Log("count" + count);
     }
 
-    public int getId(){
+    public int getId() {
         return id;
-=======
-    private void Start()
-    {
->>>>>>> 0468b5214079c1318ade227d932e01fa19b68a6e
+    }
+
+    public static void setCountZero(){
+        count = 0;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         HeroRefugee refugee = collider.GetComponent<HeroRefugee>();
         if (refugee){
+            Debug.Log("this.getId()" + this.getId());
             FruitController.instance.setCollected(this.getId());
             LivesPanel.instance.addHealth(5);
+            Destroy(this.gameObject);
         }
-
-        Destroy(this.gameObject);
     }
 
     void OnMouseDown()

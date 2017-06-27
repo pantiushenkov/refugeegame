@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SuccessPopUp : MonoBehaviour {
 
     public MyButton okButton;
@@ -18,5 +18,7 @@ public class SuccessPopUp : MonoBehaviour {
     {
         Debug.Log("CLOSEEEE");
         Destroy(this.gameObject);
+
+        SceneManager.LoadScene("Game");
     }
 }

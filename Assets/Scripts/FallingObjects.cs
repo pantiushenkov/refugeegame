@@ -12,7 +12,7 @@ public class FallingObjects : MonoBehaviour {
     int numberOfObjects = 4;
    
     int obtainedObjects = 0;
-    int objectsToPass = 30;
+    int objectsToPass = 3;
 
     bool play = true;
 
@@ -64,7 +64,7 @@ public class FallingObjects : MonoBehaviour {
         else {
             obtainedObjects += 1;
             objectsLabel.text = obtainedObjects + "/" + objectsToPass;
-            if (obtainedObjects >= 30) {
+            if (obtainedObjects >= objectsToPass) {
                 showSuccessPopUp();
             }
         }

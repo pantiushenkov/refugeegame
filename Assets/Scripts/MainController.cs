@@ -16,7 +16,8 @@ public class MainController : MonoBehaviour{
      public void Awake(){
 		instance = this;
 		list = new Dictionary<President, Country>();
-
+        Fruit.setCountZero();
+     
 		for (int i = 0; i < presidents.Count; i++)
 			list.Add(presidents[i], countries[i]);
 	}
@@ -36,15 +37,8 @@ public class MainController : MonoBehaviour{
 		return list;
 	}
 
-<<<<<<< HEAD
     public LevelStats getStats(){
         return stat;
-    }
-
-=======
-	public void Start(){
-		
-	}
+    }    
  
->>>>>>> 0468b5214079c1318ade227d932e01fa19b68a6e
 }
